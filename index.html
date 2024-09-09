@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixel-Sketch</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="main-container">
+        <section class="control-container">
+            <div class="color-control">
+                <label for="base">Change color</label>
+                <input type="color" id="base" name="base" value="#000000">
+            </div>
+            <div class="grid-control">
+                <label for="grid-size">Grid size: <span id="grid-size-value">10 x 10</span></label>
+                <input type="range" id="grid-size" min="10" max="64" value="32">
+            </div>
+            <div class="mode-control">
+                <button id="border" class="border-button active">Toggle Borders</button>
+                <button id="brush" class="brush-button active">Brush Mode</button>
+                <button id="shade" class="shade-button ">Shading Mode</button>
+                <button id="rainbow" class="rainbow-button ">Rainbow Mode</button>
+            </div>
+            <div class="erase-control">
+                <button id="erase" class="erase-button">Eraser</button>
+                <button id="clear" class="clear-button">Clear Canvas</button>
+            </div>
+        </section>
+        <div class="sketch-container">
+            <div class="title">Pixel-Sketch</div>
+            <div class="grid-container">
+                <!-- Generate grid item divs using JavaScript -->
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
