@@ -3,15 +3,15 @@ let toggleBorderButton = true;
 
 // CSS grid variables
 const gridContainer = document.querySelector('.grid-container');
-const gridSizeInput = document.querySelector('.grid-size');
-const gridSizeValue = document.querySelector('.grid-size-value');
+const gridSizeInput = document.querySelector('#grid-size');
+const gridSizeValue = document.querySelector('#grid-size-value');
 
 function updateGrid(){
-    // const gridSize = gridSizeInput.value;
-    const gridSize = 100;
-    // gridSizeValue.textContent = `${gridSize}x${gridSize}`;
+    const gridSize = gridSizeInput.value;
+    // const gridSize = 100;
+    gridSizeValue.textContent = `${gridSize}x${gridSize}`;
 
- // Clear the grid container
+    gridContainer.innerHTML = '' // Clear the grid container
 
     for(let i = 1;i <= gridSize ** 2; i++){
         const gridItem = document.createElement('div');
@@ -27,5 +27,8 @@ function updateGrid(){
     });
 }
 
-updateGrid();
+// render the grid for the first time
+updateGrid(); 
 
+// Listen for input changes
+gridSizeInput.addEventListener('input', updateGrid);

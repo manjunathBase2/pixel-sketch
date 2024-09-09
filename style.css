@@ -1,5 +1,4 @@
 
-
 /* Container classes */
 
 .main-container {
@@ -22,3 +21,7 @@
   border: 1px solid #ccc; /* Optional: border for each cell */
   box-sizing: border-box; /* Ensures borders are included in width/height */
 }
+
+
+/* Brush mode */
+
