@@ -1,6 +1,11 @@
 
 let toggleBorderButton = true;
 
+// Color variables
+let hexColor = "#000000";
+
+isMousedown = false;
+
 // CSS grid variables
 const gridContainer = document.querySelector('.grid-container');
 const gridSizeInput = document.querySelector('#grid-size');
@@ -25,10 +30,45 @@ function updateGrid(){
     item.style.width = itemSize;
     item.style.height = itemSize;
     });
+    
+    boxesListener();
 }
 
 // render the grid for the first time
-updateGrid(); 
+updateGrid();
 
-// Listen for input changes
+
+
+function handleMouseDown(){
+    isMousedown = true;
+
+    this.style.backgroundColor = hexColor;
+
+}
+
+// function handleMouseUp() {
+//   isMouseDown = false;
+// }
+
+function handleMouseEnter(event) {
+//   if (isMouseDown) {
+//     handleMouseDown.call(this, event);
+//   }
+    handleMouseDown.call(this, event);
+}
+
+
+
+/* <----------- Event Listeners ------------> */
+
+function boxesListener(){
+    const boxes = document.querySelectorAll('.grid-item');
+    boxes.forEach((box) => {
+        box.addEventListener("mousedown",handleMouseDown);
+        // box.addEventListener("mouseup",handleMouseUp);
+        box.addEventListener("mouseenter",handleMouseEnter);
+    });
+}
+
 gridSizeInput.addEventListener('input', updateGrid);
+
