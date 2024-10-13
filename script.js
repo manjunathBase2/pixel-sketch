@@ -1,5 +1,14 @@
 
 let toggleBorderButton = true;
+let isEraseButton = false;
+
+
+// Button nodes
+const eraseButton = document.querySelector('.erase-button');
+eraseButton.addEventListener('click', () => isEraseButton = true);
+
+const brushButton = document.querySelector('.brush-button');
+brushButton.addEventListener('click', () => isEraseButton = false);
 
 // Color variables
 let hexColor = "#000000";
@@ -12,6 +21,8 @@ const gridSizeInput = document.querySelector('#grid-size');
 const gridSizeValue = document.querySelector('#grid-size-value');
 
 function updateGrid(){
+    isEraseButton = false;
+    
     const gridSize = gridSizeInput.value;
     // const gridSize = 100;
     gridSizeValue.textContent = `${gridSize}x${gridSize}`;
@@ -42,7 +53,12 @@ updateGrid();
 function handleMouseDown(){
     isMousedown = true;
 
-    this.style.backgroundColor = hexColor;
+    if(isEraseButton){
+        eraser(this);
+    }
+    else{
+        this.style.backgroundColor = hexColor;
+    }
 
 }
 
@@ -57,6 +73,10 @@ function handleMouseEnter(event) {
     handleMouseDown.call(this, event);
 }
 
+
+function eraser(div){
+    div.style.backgroundColor = "#FFFFFF";
+}
 
 
 /* <----------- Event Listeners ------------> */
