@@ -20,6 +20,12 @@ const gridContainer = document.querySelector('.grid-container');
 const gridSizeInput = document.querySelector('#grid-size');
 const gridSizeValue = document.querySelector('#grid-size-value');
 
+
+
+
+/* <----------- Functions ------------> */
+
+
 function updateGrid(){
     isEraseButton = false;
     
@@ -47,7 +53,6 @@ function updateGrid(){
 
 // render the grid for the first time
 updateGrid();
-
 
 
 function handleMouseDown(){
