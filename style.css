@@ -18,8 +18,12 @@
 
 .grid-item {
   flex: 1 0 auto;
-  border: 1px solid #ccc; /* Optional: border for each cell */
   box-sizing: border-box; /* Ensures borders are included in width/height */
+}
+
+
+.grid-border {
+  border: 0.03125rem solid #ddd;
 }
 
 
