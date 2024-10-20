@@ -73,13 +73,21 @@ function handleMouseDown(){
     if(buttonStates["erase"]){
         eraser(this);
     }
+    else if(buttonStates["shade"]){
+        //TODO: Reset the opacity to 0.1 if the color is changed
+        this.style.backgroundColor = hexColor;
+        this.style.opacity = Number(this.style.opacity) + 0.1;
+    }
+
     else if(buttonStates["rainbow"]){
         hexColor = rainbowMode();
         colorChange.value = hexColor; // setting the brush color same as the last random color in rainbow
         this.style.backgroundColor = hexColor;
+        this.style.opacity = 1;
     }
     else{
         this.style.backgroundColor = hexColor;
+        this.style.opacity = 1;
     }
 
 }
@@ -99,7 +107,10 @@ function handleMouseEnter(event) {
 
 
 function eraser(div){
+    // div.removeAttribute("background-color");
+    // div.removeAttribute("opacity");
     div.style.backgroundColor = "#FFFFFF";
+    // div.style.opacity = 0.01;
 }
 
 
@@ -126,8 +137,7 @@ function toggleButton(event){
 
             buttonStates[buttonId] = false;  // sets all the other buttons to false one by one in loop
 
-            
-            if(isAlreadyActive){
+            if(isAlreadyActive || clickedButtonId === "clear"){
                 brushButton.classList.add("active");  // If button clicked is already active, it will toggle off and brush button will ON by default
                 buttonStates["brush"] = true;
             }
@@ -185,4 +195,5 @@ colorChange.addEventListener("input",function(){ hexColor = this.value; });   //
 buttons.forEach((button) => button.addEventListener('click',toggleButton));
 borderButton.addEventListener("click",toggleBorders);
 gridSizeInput.addEventListener('input', updateGrid);
+clearButton.addEventListener("click",updateGrid);
 
