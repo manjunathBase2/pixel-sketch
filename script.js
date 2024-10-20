@@ -8,10 +8,11 @@ let buttonStates = {
     shade: false,
     rainbow: false,
     erase: false,
+    lighten: false,
 };
 
 const buttons = document.querySelectorAll(
-    ".brush-button, .shade-button, .rainbow-button, .erase-button, .clear-button"
+    ".brush-button, .shade-button, .rainbow-button, .erase-button,.lighten-button, .clear-button"
 );
 
 
@@ -28,6 +29,11 @@ const colorChange = document.querySelector("#base");
 
 
 isMousedown = false;
+document.body.onmousedown = () => (isMouseDown = true);
+document.body.onmouseup = () => (isMouseDown = false);
+document.body.ondragstart = () => false;
+
+
 
 // CSS grid variables
 const gridContainer = document.querySelector('.grid-container');
@@ -69,7 +75,8 @@ updateGrid();
 
 function handleMouseDown(){
     isMousedown = true;
-
+    
+    if (isMouseDown) {
     if(buttonStates["erase"]){
         eraser(this);
     }
@@ -78,39 +85,37 @@ function handleMouseDown(){
         this.style.backgroundColor = hexColor;
         this.style.opacity = Number(this.style.opacity) + 0.1;
     }
-
     else if(buttonStates["rainbow"]){
         hexColor = rainbowMode();
         colorChange.value = hexColor; // setting the brush color same as the last random color in rainbow
         this.style.backgroundColor = hexColor;
         this.style.opacity = 1;
     }
+    else if(buttonStates["lighten"]){
+        this.style.opacity = Number(this.style.opacity) - 0.1;
+    }
     else{
         this.style.backgroundColor = hexColor;
         this.style.opacity = 1;
     }
-
+    
+}
 }
 
-// function handleMouseUp() {
-//   isMouseDown = false;
-// }
 
 function handleMouseEnter(event) {
-//   if (isMouseDown) {
-//     handleMouseDown.call(this, event);
-//   }
-    handleMouseDown.call(this, event);
+    event.preventDefault();
+    if (isMouseDown) {
+        handleMouseDown.call(this, event);
+    }
 }
 
 
 
 
 function eraser(div){
-    // div.removeAttribute("background-color");
-    // div.removeAttribute("opacity");
-    div.style.backgroundColor = "#FFFFFF";
-    // div.style.opacity = 0.01;
+    div.style.removeProperty("background-color");
+    div.style.removeProperty("opacity");
 }
 
 
@@ -174,9 +179,7 @@ function boxesListener(gridBorder){
     const boxes = document.querySelectorAll('.grid-item');
     boxes.forEach((box) => {
         box.addEventListener("mousedown",handleMouseDown);
-        // box.addEventListener("mouseup",handleMouseUp);
         box.addEventListener("mouseenter",handleMouseEnter);
-
 
         if(gridBorder){
             box.classList.add("grid-border");
