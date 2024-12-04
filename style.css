@@ -29,6 +29,127 @@
 
 /* Brush mode */
 
+/* Additional styling for buttons */
+button {
+  border-radius: 0.3125rem;
+  border: 0.125rem solid var(--button-border, #3c4a6e);
+  background: var(--button-bg, #303136);
+  color: var(--text-color, #fff);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+  background: var(--button-hover-bg, #3a3a3b);
+}
+
+button.active {
+  background: var(--button-active-bg, #ff7629);
+  border-color: var(--button-active-border, #ffa26d);
+  font-weight: 700;
+  transform: translateY(2px);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Styling for the slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 70%;
+  height: 0.25rem;
+  background: var(--text-color, #fff);
+  border-radius: 0.125rem;
+  cursor: pointer;
+  margin: 0.5rem 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--slider-thumb-bg, #fff);
+  border: 0.125rem solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+}
+
+/* Optional spacing and alignment for control containers */
+.control-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.color-control,
+.grid-control,
+.mode-control,
+.erase-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Adding consistent styling for hover and transitions */
+.grid-container {
+  transition: border-color 0.2s ease-in-out;
+}
+
+.grid-item {
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Maintain existing functionality while enhancing appearance */
+.title {
+  color: var(--title-color, #2d3891);
+  font-size: 3.75rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+/* Setting the whole page background color */
+body {
+  background-color: #001343;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff; /* Ensures text remains readable on dark background */
+}
+
+/* Keeping the canvas white */
+.grid-container {
+  background-color: #ffffff; /* Ensure canvas background stays white */
+  border: 1px solid #000; /* Retain border visibility */
+}
+
+/* Equal sizes for all buttons */
+button {
+  width: 140px; /* Set a consistent width */
+  height: 40px; /* Set a consistent height */
+  line-height: 1.2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Includes padding and border in dimensions */
+}
+
+button.active {
+  transform: translateY(2px); /* Ensure this works well with the button size */
+}
 
 
 
