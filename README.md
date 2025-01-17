@@ -1,5 +1,6 @@
 # pixel-sketch
 
+![pixel-sketch](https://github.com/user-attachments/assets/b0751728-9ba3-4318-8e74-4a0f992ecb52)
 
 Design insights:
 
